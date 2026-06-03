@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AleKyle Connect | Premium Services</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%233b82f6'/><text x='50' y='70' font-size='60' font-weight='bold' text-anchor='middle' fill='white' font-family='Arial'>A</text></svg>">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        * { font-family: 'Poppins', sans-serif; }
+        html { scroll-behavior: smooth; }
+        
+        /* Animated Gradient Background */
+        .hero-gradient {
+            background: linear-gradient(-45deg, #0f172a, #1e3a5f, #0f766e, #1e40af, #7c3aed);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+        }
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        /* Glassmorphism */
+        .glass {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .glass-dark {
+            background: rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        /* Card Animations */
+        .card-3d {
+            transition: all 0.5s cubic-bezier(0.23, 1, 0.320, 1);
+            transform-style: preserve-3d;
+        }
+        .card-3d:hover {
+            transform: translateY(-15px) rotateX(5deg) rotateY(-5deg);
+            box-shadow: 0 40px 80px rgba(0,0,0,0.3), 0 0 40px rgba(59, 130, 246, 0.2);
+        }
+        
+        /* Floating Animation */
+        .float {
+            animation: float 6s ease-in-out infinite;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        /* Glow Effects */
+        .glow {
+            box-shadow: 0 0 60px rgba(59, 130, 246, 0.5);
+        }
+        .glow-text {
+            text-shadow: 0 0 40px rgba(255,255,255,0.5);
+        }
+        
+        /* Pulse Animation */
+        .pulse-ring {
+            animation: pulse-ring 2s infinite;
+        }
+        @keyframes pulse-ring {
+            0% { transform: scale(0.8); opacity: 1; }
+            100% { transform: scale(1.5); opacity: 0; }
+        }
+        
+        /* Fade In Up */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(40px);
+            animation: fadeUp 1s ease forwards;
+        }
+        .fade-up-delay-1 { animation-delay: 0.2s; }
+        .fade-up-delay-2 { animation-delay: 0.4s; }
+        .fade-up-delay-3 { animation-delay: 0.6s; }
+        @keyframes fadeUp {
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* Particle Background */
+        .particles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+        .particle {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            animation: particleFloat 20s infinite;
+        }
+        @keyframes particleFloat {
+            0%, 100% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(-100vh) rotate(720deg); opacity: 0; }
+        }
+        
+        /* Shimmer Effect */
+        .shimmer {
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            background-size: 200% 100%;
+            animation: shimmer 2s infinite;
+        }
+        @keyframes shimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+        
+        /* Button Hover */
+        .btn-premium {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s ease;
+        }
+        .btn-premium::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s;
+        }
+        .btn-premium:hover::before {
+            left: 100%;
+        }
+        .btn-premium:hover {
+            transform: scale(1.05);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+        
+        /* Nav Glass */
+        .nav-glass {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+        }
+        
+        /* Icon Bounce */
+        .icon-bounce:hover i {
+            animation: iconBounce 0.5s ease;
+        }
+        @keyframes iconBounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        /* Gradient Border */
+        .gradient-border {
+            position: relative;
+            background: white;
+        }
+        .gradient-border::before {
+            content: '';
+            position: absolute;
+            inset: -3px;
+            border-radius: inherit;
+            background: linear-gradient(135deg, #3b82f6, #8b5cf6, #ec4899, #f59e0b);
+            z-index: -1;
+        }
+        
+        /* Stats Counter */
+        .stat-card {
+            background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
+            backdrop-filter: blur(10px);
+        }
+    </style>
+</head>
+<body class="bg-slate-900">
+    <!-- Navigation -->
+    <nav class="fixed w-full nav-glass shadow-2xl z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                <a href="home.html" class="flex items-center space-x-3">
+                    <div class="w-12 h-12 bg-gradient-to-br from-blue-600 to-purple-600 rounded-xl flex items-center justify-center shadow-lg">
+                        <i class="fas fa-rocket text-white text-xl"></i>
+                    </div>
+                    <span class="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">AleKyle Connect</span>
+                </a>
+                <div class="hidden md:flex space-x-1">
+                    <a href="home.html" class="px-5 py-2 rounded-full bg-gradient-to-r from-blue-600 to-purple-600 text-white font-medium shadow-lg">Home</a>
+                    <a href="index.html" class="px-5 py-2 rounded-full text-gray-700 hover:bg-gray-100 transition font-medium">Shuttle</a>
+                    <a href="courier.html" class="px-5 py-2 rounded-full text-gray-700 hover:bg-gray-100 transition font-medium">Courier</a>
+                    <a href="decor.html" class="px-5 py-2 rounded-full text-gray-700 hover:bg-gray-100 transition font-medium">Decor</a>
+                    <a href="mentor.html" class="px-5 py-2 rounded-full text-gray-700 hover:bg-gray-100 transition font-medium">Mentorship</a>
+                </div>
+                <button id="mobileMenuBtn" class="md:hidden w-12 h-12 bg-gray-100 rounded-xl flex items-center justify-center">
+                    <i class="fas fa-bars text-gray-700 text-xl"></i>
+                </button>
+            </div>
+            <div id="mobileMenu" class="hidden md:hidden pb-6 space-y-2">
+                <a href="home.html" class="block py-3 px-4 rounded-xl bg-gradient-to-r from-blue-600 to-purple-600 text-white font-medium">Home</a>
+                <a href="index.html" class="block py-3 px-4 rounded-xl text-gray-700 hover:bg-gray-100">Shuttle</a>
+                <a href="courier.html" class="block py-3 px-4 rounded-xl text-gray-700 hover:bg-gray-100">Courier</a>
+                <a href="decor.html" class="block py-3 px-4 rounded-xl text-gray-700 hover:bg-gray-100">Decor</a>
+                <a href="mentor.html" class="block py-3 px-4 rounded-xl text-gray-700 hover:bg-gray-100">Mentorship</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-gradient min-h-screen flex items-center justify-center relative overflow-hidden">
+        <!-- Particles -->
+        <div class="particles">
+            <div class="particle" style="left: 10%; animation-delay: 0s;"></div>
+            <div class="particle" style="left: 20%; animation-delay: 2s;"></div>
+            <div class="particle" style="left: 30%; animation-delay: 4s;"></div>
+            <div class="particle" style="left: 40%; animation-delay: 1s;"></div>
+            <div class="particle" style="left: 50%; animation-delay: 3s;"></div>
+            <div class="particle" style="left: 60%; animation-delay: 5s;"></div>
+            <div class="particle" style="left: 70%; animation-delay: 2.5s;"></div>
+            <div class="particle" style="left: 80%; animation-delay: 1.5s;"></div>
+            <div class="particle" style="left: 90%; animation-delay: 4.5s;"></div>
+        </div>
+        
+        <div class="max-w-7xl mx-auto px-4 text-center text-white relative z-10 pt-20">
+            <!-- Floating Logo -->
+            <div class="float mb-8 fade-up">
+                <div class="w-32 h-32 mx-auto bg-white/10 backdrop-blur-xl rounded-3xl flex items-center justify-center glow border border-white/20">
+                    <i class="fas fa-rocket text-6xl text-white"></i>
+                </div>
+            </div>
+            
+            <h1 class="text-5xl md:text-8xl font-black mb-6 fade-up fade-up-delay-1 glow-text tracking-tight">
+                AleKyle <span class="bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">Connect</span>
+            </h1>
+            
+            <p class="text-xl md:text-3xl mb-4 opacity-90 fade-up fade-up-delay-2 font-light">
+                Elevating Your Life Through <span class="font-semibold">Excellence</span>
+            </p>
+            
+            <p class="text-lg md:text-xl mb-12 opacity-70 max-w-3xl mx-auto fade-up fade-up-delay-3">
+                Your premium partner for transportation, delivery, event decorations, and professional mentorship
+            </p>
+            
+            <div class="flex flex-wrap justify-center gap-4 fade-up fade-up-delay-3">
+                <a href="#services" class="btn-premium bg-white text-slate-900 px-10 py-4 rounded-full font-bold text-lg shadow-2xl inline-flex items-center">
+                    Explore Services <i class="fas fa-arrow-right ml-3"></i>
+                </a>
+                <a href="#contact" class="btn-premium glass px-10 py-4 rounded-full font-bold text-lg inline-flex items-center">
+                    Contact Us <i class="fas fa-phone ml-3"></i>
+                </a>
+            </div>
+            
+            <!-- Stats -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-20 fade-up fade-up-delay-3">
+                <div class="stat-card rounded-2xl p-6 border border-white/10">
+                    <div class="text-4xl font-black text-cyan-400">500+</div>
+                    <div class="text-white/70 text-sm mt-1">Happy Clients</div>
+                </div>
+                <div class="stat-card rounded-2xl p-6 border border-white/10">
+                    <div class="text-4xl font-black text-purple-400">4</div>
+                    <div class="text-white/70 text-sm mt-1">Services</div>
+                </div>
+                <div class="stat-card rounded-2xl p-6 border border-white/10">
+                    <div class="text-4xl font-black text-pink-400">24/7</div>
+                    <div class="text-white/70 text-sm mt-1">Support</div>
+                </div>
+                <div class="stat-card rounded-2xl p-6 border border-white/10">
+                    <div class="text-4xl font-black text-amber-400">100%</div>
+                    <div class="text-white/70 text-sm mt-1">Satisfaction</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Scroll Indicator -->
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2">
+            <div class="w-8 h-14 border-2 border-white/30 rounded-full flex justify-center">
+                <div class="w-2 h-4 bg-white rounded-full mt-2 animate-bounce"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-32 bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-20">
+                <span class="text-cyan-400 font-semibold text-lg tracking-widest uppercase">What We Offer</span>
+                <h2 class="text-4xl md:text-6xl font-black text-white mt-4 mb-6">Our Premium Services</h2>
+                <p class="text-xl text-gray-400 max-w-2xl mx-auto">Experience excellence across all our carefully crafted services designed to elevate every aspect of your life</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Shuttle Service -->
+                <a href="index.html" class="card-3d group">
+                    <div class="h-full bg-gradient-to-br from-blue-600 via-blue-700 to-indigo-800 rounded-3xl p-10 text-white relative overflow-hidden">
+                        <div class="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full blur-3xl transform translate-x-20 -translate-y-20"></div>
+                        <div class="relative z-10">
+                            <div class="w-20 h-20 bg-white/20 rounded-2xl flex items-center justify-center mb-8 group-hover:scale-110 transition duration-500">
+                                <i class="fas fa-shuttle-van text-4xl"></i>
+                            </div>
+                            <h3 class="text-3xl font-bold mb-2">Shuttle Service</h3>
+                            <p class="text-blue-200 mb-6">Point-to-Point Transportation</p>
+                            <p class="text-lg opacity-90 mb-8">Travel comfortably from any location to your desired destination with our premium shuttle service.</p>
+                            <ul class="space-y-3 mb-8">
+                                <li class="flex items-center"><i class="fas fa-check-circle mr-3 text-cyan-400"></i> Any pickup location</li>
+                                <li class="flex items-center"><i class="fas fa-check-circle mr-3 text-cyan-400"></i> Any destination</li>
+                                <li class="flex items-center"><i class="fas fa-check-circle mr-3 text-cyan-400"></i> Modern fleet</li>
+                            </ul>
+                            <div class="flex items-center font-semibold text-lg group-hover:translate-x-3 transition">
+                                Book Now <i class="fas fa-arrow-right ml-3"></i>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Courier Service -->
+                <a href="courier.html" class="card-3d group">
+                    <div class="h-full bg-gradient-to-br from-emerald-600 via-green-600 to-teal-700 rounded-3xl p-10 text-white relative overflow-hidden">
+                        <div class="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full blur-3xl transform translate-x-20 -translate-y-20"></div>
+                        <div class="relative z-10">
+                            <div class="w-20 h-20 bg-white/20 rounded-2xl flex items-center justify-center mb-8 group-hover:scale-110 transition duration-500">
+                                <i class="fas fa-box text-4xl"></i>
+                            </div>
+                            <h3 class="text-3xl font-bold mb-2">Courier Service</h3>
+                            <p class="text-green-200 mb-6">Pretoria Parcel Delivery</p>
+                            <p class="text-lg opacity-90 mb-8">Fast and reliable parcel delivery within Pretoria. Operating Friday to Sunday.</p>
+                            <ul class="space-y-3 mb-8">
+                                <li class="flex items-center"><i class="fas fa-check-circle mr-3 text-emerald-300"></i> Same-day delivery</li>
+                                <li class="flex items-center"><i class="fas fa-check-circle mr-3 text-emerald-300"></i> Secure handling</li>
+                                <li class="flex items-center"><i class="fas fa-check-circle mr-3 text-emerald-300"></i> Real-time tracking</li>
+                            </ul>
+                            <div class="flex items-center font-semibold text-lg group-hover:translate-x-3 transition">
+                                Send Parcel <i class="fas fa-arrow-right ml-3"></i>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Decor Service -->
+                <a href="decor.html" class="card-3d group">
+                    <div class="h-full bg-gradient-to-br from-pink-600 via-purple-600 to-indigo-700 rounded-3xl p-10 text-white relative overflow-hidden">
+                        <div class="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full blur-3xl transform translate-x-20 -translate-y-20"></div>
+                        <div class="relative z-10">
+                            <div class="w-20 h-20 bg-white/20 rounded-2xl flex items-center justify-center mb-8 group-hover:scale-110 transition duration-500">
+                                <i class="fas fa-sparkles text-4xl"></i>
+                            </div>
+                            <h3 class="text-3xl font-bold mb-2">Party & Event Decor</h3>
+                            <p class="text-pink-200 mb-6">Beautiful Decorations</p>
+                            <p class="text-lg opacity-90 mb-8">Transform your special occasions into unforgettable memories with stunning decorations.</p>
+                            <ul class="space-y-3 mb-8">
+                                <li class="flex items-center"><i class="fas fa-check-circle mr-3 text-pink-300"></i> Birthday parties</li>
+                                <li class="flex items-center"><i class="fas fa-check-circle mr-3 text-pink-300"></i> Small weddings</li>
+                                <li class="flex items-center"><i class="fas fa-check-circle mr-3 text-pink-300"></i> Special functions</li>
+                            </ul>
+                            <div class="flex items-center font-semibold text-lg group-hover:translate-x-3 transition">
+                                Get Quote <i class="fas fa-arrow-right ml-3"></i>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Mentorship Service -->
+                <a href="mentor.html" class="card-3d group">
+                    <div class="h-full bg-gradient-to-br from-orange-500 via-red-500 to-rose-600 rounded-3xl p-10 text-white relative overflow-hidden">
+                        <div class="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full blur-3xl transform translate-x-20 -translate-y-20"></div>
+                        <div class="relative z-10">
+                            <div class="w-20 h-20 bg-white/20 rounded-2xl flex items-center justify-center mb-8 group-hover:scale-110 transition duration-500">
+                                <i class="fas fa-chalkboard-teacher text-4xl"></i>
+                            </div>
+                            <h3 class="text-3xl font-bold mb-2">Teacher Mentorship</h3>
+                            <p class="text-orange-200 mb-6">Online Professional Guidance</p>
+                            <p class="text-lg opacity-90 mb-8">Empowering young educators to become exceptional teachers through personalized mentorship.</p>
+                            <ul class="space-y-3 mb-8">
+                                <li class="flex items-center"><i class="fas fa-check-circle mr-3 text-amber-300"></i> One-on-one sessions</li>
+                                <li class="flex items-center"><i class="fas fa-check-circle mr-3 text-amber-300"></i> Experienced mentors</li>
+                                <li class="flex items-center"><i class="fas fa-check-circle mr-3 text-amber-300"></i> 100% online</li>
+                            </ul>
+                            <div class="flex items-center font-semibold text-lg group-hover:translate-x-3 transition">
+                                Start Learning <i class="fas fa-arrow-right ml-3"></i>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section class="py-32 bg-white">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-20">
+                <span class="text-purple-600 font-semibold text-lg tracking-widest uppercase">Our Promise</span>
+                <h2 class="text-4xl md:text-6xl font-black text-gray-900 mt-4 mb-6">Why Choose AleKyle Connect?</h2>
+                <p class="text-xl text-gray-600">We're committed to excellence in everything we do</p>
+            </div>
+            <div class="grid md:grid-cols-4 gap-8">
+                <div class="text-center group">
+                    <div class="w-24 h-24 mx-auto bg-gradient-to-br from-blue-500 to-blue-700 rounded-3xl flex items-center justify-center mb-6 shadow-2xl group-hover:scale-110 transition duration-500 group-hover:shadow-blue-500/50">
+                        <i class="fas fa-star text-4xl text-white"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-3">Premium Quality</h3>
+                    <p class="text-gray-600">Excellence in every service we provide</p>
+                </div>
+                <div class="text-center group">
+                    <div class="w-24 h-24 mx-auto bg-gradient-to-br from-green-500 to-emerald-700 rounded-3xl flex items-center justify-center mb-6 shadow-2xl group-hover:scale-110 transition duration-500 group-hover:shadow-green-500/50">
+                        <i class="fas fa-wallet text-4xl text-white"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-3">Affordable Rates</h3>
+                    <p class="text-gray-600">Competitive pricing, premium quality</p>
+                </div>
+                <div class="text-center group">
+                    <div class="w-24 h-24 mx-auto bg-gradient-to-br from-purple-500 to-indigo-700 rounded-3xl flex items-center justify-center mb-6 shadow-2xl group-hover:scale-110 transition duration-500 group-hover:shadow-purple-500/50">
+                        <i class="fas fa-headset text-4xl text-white"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-3">24/7 Support</h3>
+                    <p class="text-gray-600">Always here when you need us</p>
+                </div>
+                <div class="text-center group">
+                    <div class="w-24 h-24 mx-auto bg-gradient-to-br from-orange-500 to-red-600 rounded-3xl flex items-center justify-center mb-6 shadow-2xl group-hover:scale-110 transition duration-500 group-hover:shadow-orange-500/50">
+                        <i class="fas fa-handshake text-4xl text-white"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-3">Trusted & Reliable</h3>
+                    <p class="text-gray-600">Count on us to deliver every time</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-32 bg-gradient-to-br from-slate-100 to-slate-200">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="grid md:grid-cols-2 gap-16 items-center">
+                <div>
+                    <span class="text-blue-600 font-semibold text-lg tracking-widest uppercase">Get In Touch</span>
+                    <h2 class="text-4xl md:text-5xl font-black text-gray-900 mt-4 mb-6">Let's Connect Today</h2>
+                    <p class="text-xl text-gray-600 mb-10">Have questions? We'd love to hear from you. Reach out through any of these channels.</p>
+                    <div class="space-y-6">
+                        <div class="flex items-center group cursor-pointer">
+                            <div class="w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-700 rounded-2xl flex items-center justify-center mr-6 shadow-lg group-hover:scale-110 transition">
+                                <i class="fas fa-phone text-white text-2xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-800 text-lg">Phone</h4>
+                                <p class="text-gray-600">+27 76 907 9104</p>
+                                <p class="text-gray-600">+27 67 725 3057</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center group cursor-pointer">
+                            <div class="w-16 h-16 bg-gradient-to-br from-green-500 to-green-700 rounded-2xl flex items-center justify-center mr-6 shadow-lg group-hover:scale-110 transition">
+                                <i class="fab fa-whatsapp text-white text-2xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-800 text-lg">WhatsApp</h4>
+                                <p class="text-gray-600">+27 76 907 9104</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center group cursor-pointer">
+                            <div class="w-16 h-16 bg-gradient-to-br from-purple-500 to-purple-700 rounded-2xl flex items-center justify-center mr-6 shadow-lg group-hover:scale-110 transition">
+                                <i class="fas fa-envelope text-white text-2xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-800 text-lg">Email</h4>
+                                <p class="text-gray-600">altheawilliams3@gmail.com</p>
+                                <p class="text-gray-600">alistairdavids@gmail.com</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center group cursor-pointer">
+                            <div class="w-16 h-16 bg-gradient-to-br from-orange-500 to-red-600 rounded-2xl flex items-center justify-center mr-6 shadow-lg group-hover:scale-110 transition">
+                                <i class="fas fa-map-marker-alt text-white text-2xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-800 text-lg">Location</h4>
+                                <p class="text-gray-600">Pretoria, South Africa</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="gradient-border rounded-3xl p-1">
+                    <div class="bg-white rounded-3xl p-10">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-8">Send Us a Message</h3>
+                        <form id="contactForm" class="space-y-5">
+                            <input type="text" placeholder="Your Name" class="w-full p-4 bg-gray-50 border-2 border-gray-100 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition text-lg" required>
+                            <input type="email" placeholder="Email Address" class="w-full p-4 bg-gray-50 border-2 border-gray-100 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition text-lg" required>
+                            <input type="tel" placeholder="Phone Number" class="w-full p-4 bg-gray-50 border-2 border-gray-100 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition text-lg">
+                            <select class="w-full p-4 bg-gray-50 border-2 border-gray-100 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition text-lg" required>
+                                <option value="">Select Service of Interest</option>
+                                <option value="shuttle">Shuttle Service</option>
+                                <option value="courier">Courier Service</option>
+                                <option value="decor">Party & Event Decor</option>
+                                <option value="mentorship">Teacher Mentorship</option>
+                                <option value="general">General Inquiry</option>
+                            </select>
+                            <textarea placeholder="Your Message" rows="4" class="w-full p-4 bg-gray-50 border-2 border-gray-100 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition text-lg" required></textarea>
+                            <button type="submit" class="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white py-5 rounded-xl font-bold text-lg hover:shadow-2xl hover:scale-[1.02] transition">
+                                Send Message <i class="fas fa-paper-plane ml-2"></i>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-white py-16 relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10">
+            <div class="absolute top-0 left-0 w-96 h-96 bg-blue-500 rounded-full blur-3xl"></div>
+            <div class="absolute bottom-0 right-0 w-96 h-96 bg-purple-500 rounded-full blur-3xl"></div>
+        </div>
+        <div class="max-w-7xl mx-auto px-4 relative z-10">
+            <div class="grid md:grid-cols-4 gap-12 mb-12">
+                <div>
+                    <div class="flex items-center space-x-3 mb-6">
+                        <div class="w-12 h-12 bg-gradient-to-br from-blue-600 to-purple-600 rounded-xl flex items-center justify-center">
+                            <i class="fas fa-rocket text-white text-xl"></i>
+                        </div>
+                        <span class="text-2xl font-bold">AleKyle Connect</span>
+                    </div>
+                    <p class="text-gray-400 leading-relaxed">Elevating your life through reliable transportation, delivery, stunning event decor, and professional mentorship.</p>
+                </div>
+                <div>
+                    <h4 class="font-bold text-xl mb-6">Our Services</h4>
+                    <ul class="space-y-4 text-gray-400">
+                        <li><a href="index.html" class="hover:text-white transition flex items-center"><i class="fas fa-chevron-right mr-2 text-xs"></i>Shuttle Service</a></li>
+                        <li><a href="courier.html" class="hover:text-white transition flex items-center"><i class="fas fa-chevron-right mr-2 text-xs"></i>Courier Delivery</a></li>
+                        <li><a href="decor.html" class="hover:text-white transition flex items-center"><i class="fas fa-chevron-right mr-2 text-xs"></i>Party Decorations</a></li>
+                        <li><a href="mentor.html" class="hover:text-white transition flex items-center"><i class="fas fa-chevron-right mr-2 text-xs"></i>Teacher Mentorship</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold text-xl mb-6">Contact Info</h4>
+                    <ul class="space-y-4 text-gray-400">
+                        <li><a href="tel:+27769079104" class="flex items-center hover:text-white transition"><i class="fas fa-phone mr-3 text-blue-400"></i> +27 76 907 9104</a></li>
+                        <li><a href="tel:+27677253057" class="flex items-center hover:text-white transition"><i class="fas fa-phone mr-3 text-cyan-400"></i> +27 67 725 3057</a></li>
+                        <li><a href="mailto:altheawilliams3@gmail.com" class="flex items-center hover:text-white transition"><i class="fas fa-envelope mr-3 text-purple-400"></i> altheawilliams3@gmail.com</a></li>
+                        <li><a href="mailto:alistairdavids@gmail.com" class="flex items-center hover:text-white transition"><i class="fas fa-envelope mr-3 text-pink-400"></i> alistairdavids@gmail.com</a></li>
+                        <li><a href="https://www.google.com/maps/place/Pretoria,+South+Africa" target="_blank" class="flex items-center hover:text-white transition"><i class="fas fa-map-marker-alt mr-3 text-orange-400"></i> Pretoria, South Africa</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold text-xl mb-6">Follow Us</h4>
+                    <div class="flex space-x-4">
+                        <a href="https://www.facebook.com/" target="_blank" class="w-12 h-12 bg-white/10 hover:bg-blue-600 rounded-xl flex items-center justify-center transition"><i class="fab fa-facebook text-xl"></i></a>
+                        <a href="https://wa.me/27769079104" target="_blank" class="w-12 h-12 bg-white/10 hover:bg-green-600 rounded-xl flex items-center justify-center transition"><i class="fab fa-whatsapp text-xl"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-white/10 pt-8 text-center text-gray-400">
+                <p>&copy; <span id="currentYear"></span> AleKyle Connect. All rights reserved. Designed with <i class="fas fa-heart text-red-500"></i> in South Africa</p>
+            </div>
+            <script>document.getElementById('currentYear').textContent = new Date().getFullYear();</script>
+        </div>
+    </footer>
+
+    <!-- Success Modal -->
+    <div id="successModal" class="fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center z-50 hidden">
+        <div class="bg-white rounded-3xl p-10 max-w-md mx-4 text-center transform scale-95 animate-[fadeUp_0.3s_ease_forwards]">
+            <div class="w-24 h-24 bg-gradient-to-br from-green-400 to-green-600 rounded-full flex items-center justify-center mx-auto mb-6">
+                <i class="fas fa-check text-white text-4xl"></i>
+            </div>
+            <h3 class="text-3xl font-bold text-gray-800 mb-3">Message Sent!</h3>
+            <p class="text-gray-600 mb-8 text-lg">Thank you for contacting AleKyle Connect. We'll get back to you soon!</p>
+            <button onclick="closeModal()" class="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-10 py-4 rounded-full font-bold text-lg hover:shadow-2xl transition">Close</button>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('mobileMenuBtn').addEventListener('click', () => {
+            document.getElementById('mobileMenu').classList.toggle('hidden');
+        });
+
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            document.getElementById('successModal').classList.remove('hidden');
+            this.reset();
+        });
+
+        function closeModal() {
+            document.getElementById('successModal').classList.add('hidden');
+        }
+
+        document.getElementById('successModal').addEventListener('click', function(e) {
+            if (e.target === this) closeModal();
+        });
+        
+        // Intersection Observer for scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+        
+        document.querySelectorAll('.card-3d').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(40px)';
+            card.style.transition = 'all 0.8s cubic-bezier(0.23, 1, 0.320, 1)';
+            observer.observe(card);
+        });
+    </script>
+</body>
+</html>
