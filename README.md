@@ -3,6 +3,7 @@
 ![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
 ![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
+[![Live Demo](https://img.shields.io/badge/Live-Demo-brightgreen?style=for-the-badge)](https://SUB-Bzero.github.io/alekyle/home.html)
 
 AleKyle Connect is a high-performance, premium multi-service platform designed to streamline transportation, logistics, event styling, and professional mentorship. This project demonstrates advanced frontend engineering techniques, focusing on **performance**, **aesthetic rigor**, and **user conversion**.
 
@@ -47,8 +48,8 @@ This project was built with a "Performance-First" mindset, utilizing modern web 
 ## 📂 Project Structure
 
 ```bash
-├── home.html       # Master Navigation & Brand Hub
-├── index.html      # Shuttle Service Platform
+├── index.html      # Primary Hub & Master Navigation (formerly home.html)
+├── shuttle.html    # Shuttle Service Platform (formerly index.html)
 ├── courier.html    # Logistics Management Interface
 ├── decor.html      # Visual Portfolio & Booking
 └── mentor.html     # Mentorship CRM & Curriculum
